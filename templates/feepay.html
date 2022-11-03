@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+{%block content%}
+    <h2 class="bg-danger text-white text-center">Pay Fee</h2>
+  <form action="feepay" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+       PAY <input type="number" class="form-control" id="name" placeholder="Enter Name" name="pay">
+    </div>
+    <div class="form-group">
+        TOTAL <input type="number" class="form-control" id="name" placeholder="Enter Name" name="total">
+     </div>
+     <div class="form-group">
+        REMAINING <input type="number" class="form-control" id="name" placeholder="Enter Name" name="remaining">
+     </div>
+      <div class="form-group">
+        STUDENTS <select name="students" class=" form-control">
+            {%for s in st%}
+              <option value="{{s.id}}">{{s.sname}} {{s.branch}} {{s.sem}}</option>
+            {%endfor%}
+        </select>
+      </div>
+      <br>
+    <button type="submit" class="btn btn-danger">PAY FEES</button>
+  </form>
+{%endblock%}
+</div>
+
+</body>
+</html>

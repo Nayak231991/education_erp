@@ -1,0 +1,56 @@
+{%extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        {%block content%}
+            <table class="table table-bordered text-center text-white bg-warning">
+                <thead>
+                    <th>NAME</th>
+                    <th>EMAIL</th>
+                    <th>MOBILE</th>
+                    <th>ADDRESS</th>
+                    <th>DOB</th>
+                    <th>COLLEGE</th>
+                    <th>BRANCH</th>
+                    <th>YEAR</th>
+                    <th>SEM</th>
+                    <th>STATUS</th>
+                    <th>ENQUIRY DATE</th>
+                    <th>COURSE DETAIL</th>
+                </thead>
+                <tbody>
+            {%for s in st%}
+                    <tr>
+                        <td>{{s.sname}}</td>
+                        <td>{{s.email}}</td>
+                        <td>{{s.mobile}}</td>
+                        <td>{{s.address}}</td>
+                        <td>{{s.dob}}</td>
+                        <td>{{s.college}}</td>
+                        <td>{{s.branch}}</td>
+                        <td>{{s.year}}</td>
+                        <td>{{s.sem}}</td>
+                        <td>{{s.status}}</td>
+                        <td>{{s.enquirydate}}</td>
+                        <td>
+                            {%for t in s.cources.all %}
+                                {{t.cname}} {{t.duration}}
+                                {{t.fees}}
+                            {%endfor%}
+                        </td>
+                    </tr>
+            {%endfor%}
+        </tbody>
+        </table>
+        {%endblock%}
+    </body>
+</html>

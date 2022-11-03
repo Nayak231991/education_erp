@@ -1,0 +1,42 @@
+{%extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+{%block content%}
+    <h2 class="bg-danger text-white text-center">Enter Details For Course</h2>
+  <form action="addcourse" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+       NAME <input type="text" class="form-control" id="name" placeholder="Enter Name" name="cname">
+    </div>
+    <div class="form-group">
+      DURATION <input type="text" class="form-control" id="name" placeholder="Enter Quaification" name="duration">
+    </div>
+    <div class="form-group">
+      FEES <input type="number" class="form-control" id="name" placeholder="Enter Salary" name="fees">
+    </div>
+    <div class="form-group">
+      TRAINERS <select name="trainers" multiple class=" form-control">
+          {%for t in tr%}
+            <option value="{{t.id}}">{{t.tname}} {{t.qualification}} {{t.languages}}</option>
+          {%endfor%}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-danger">Add Course</button>
+  </form>
+{%endblock%}
+</div>
+
+</body>
+</html>

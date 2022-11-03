@@ -1,0 +1,56 @@
+{%extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+{%block content%}
+    <h2 class="bg-danger text-white text-center">Create a new batch</h2>
+  <form action="createbatch" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+       NAME <input type="text" class="form-control" id="name" placeholder="Enter Name" name="bname">
+    </div>
+    <div class="form-group">
+      STATUS <select name="status" class=" form-control">
+          <option>new</option>
+          <option>running</option>
+          <option>finished</option>
+      </select>
+    </div>
+    <div class="form-group">
+      TRAINERS <select name="trainers" class=" form-control">
+          {%for t in tr%}
+            <option value="{{t.id}}">{{t.tname}} {{t.qualification}} {{t.languages}}</option>
+          {%endfor%}
+      </select>
+    </div>
+    <div class="form-group">
+        TIME <input type="text" class="form-control" id="name" placeholder="Enter Salary" name="time">
+      </div>
+      <div class="form-group">
+        STUDENTS <select name="students" multiple class=" form-control">
+            {%for s in st%}
+              <option value="{{s.id}}">{{s.sname}} {{s.branch}} {{s.sem}}</option>
+            {%endfor%}
+        </select>
+      </div>
+      <div class="form-group">
+        START DATE <input type="date" class="form-control" id="name" placeholder="Enter Salary" name="date">
+      </div>
+    <button type="submit" class="btn btn-danger">Add Course</button>
+  </form>
+{%endblock%}
+</div>
+
+</body>
+</html>

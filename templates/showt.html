@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    {% block content %}
+    <table class="table table-bordered text-center text-white bg-warning">
+        <thead>
+            <th>NAME</th>
+            <th>FEES</th>
+            <th>REMAINING</th>
+            <th>PAY</th>
+        </thead>
+        <tbody>
+    {%for c in st%}
+            <tr>
+                <td>{{c.student.sname}}</td>
+                <td>{{c.fees}}</td>
+                <td>{{c.remaining}}</td>
+                <td>{{c.pay}}</td>
+            </tr>
+    {%endfor%}
+        <h2> Total Amount = {{total}}</h2>
+    {%endblock%}
+    </body>
+</html>
