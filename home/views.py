@@ -121,3 +121,4 @@ def showtrans(request):
         return render(request,'showt.html',{'total':s,'st':st})
     else:
         return render(request,'showtrans.html')
+        # ohdggdddbdbbdbdbdbwjdnjnd
